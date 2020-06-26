@@ -37,8 +37,18 @@ plot(average_daily_activity$interval, average_daily_activity$mean,
      main="Average number of steps per intervals")
 dev.off()
 
+## Hence The 5-minute interval that, on average, contains the maximum number of steps
+```{r}
+average_daily_activity[average_daily_activity$asteps == max(average_daily_activitys$steps),"interval"]
+```
 
-## Imputing missing values
+## Code to describe and show a strategy for imputing missing data  
+```{r}
+average_daily_activity <- sum(!complete.cases(activity))
+average_daily_activity
+```
+
+## Imputing missing values and histogram
 library(dplyr)
 sum(is.na(activity$steps))
 imputed_steps <- average_daily_activity$mean[match(activity$interval, 
